@@ -1,0 +1,50 @@
+html.dark {
+  --c-bg: #050505;
+  --c-scrollbar: #111;
+  --c-scrollbar-hover: #222;
+  --fg-light: #888;
+  --fg: #bbb;
+  --fg-deep: #ddd;
+  --fg-deeper: #fff;
+  color: var(--fg);
+  background: var(--c-bg);
+  color-scheme: dark;
+}
+html.dark ::selection {
+  background-color: #327bd4;
+  color: var(--fg-deeper);
+}
+html.dark ::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: rgba(153, 153, 153, 0.6);
+}
+html.dark img {
+  filter: brightness(0.8) contrast(1.2);
+}
+html.dark hr {
+  background-color: #30363d;
+}
+html.dark .header .logo {
+  opacity: 0.8;
+}
+/* html.dark .footer a {
+  color: var(--fg);
+} */
+/* html.dark .list-category div a {
+  border-bottom: 1px solid #8b949e;
+}
+html.dark .list-post li .date {
+  color: #8b949e;
+}
+html.dark .list-post li .categories a {
+  color: #8b949e;
+} */
+html.dark .hover-underline:after {
+  background-color: var(--fg-deep);
+}
+html.dark .footer-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+html.dark .footer-btn i {
+  opacity: 0.7;
+}

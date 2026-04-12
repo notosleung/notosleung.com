@@ -1,0 +1,281 @@
+:root {
+  --c-bg: #fff;
+  --c-scrollbar: #eee;
+  --c-scrollbar-hover: #bbb;
+  --fg-light: #888;
+  --fg: #555;
+  --fg-deep: #222;
+  --fg-deeper: #000;
+  color-scheme: light dark;
+}
+html {
+  color: var(--fg);
+  background: var(--c-bg);
+  scroll-behavior: smooth;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Cascadia Code', Consolas, Helvetica, 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  overflow-y: scroll;
+  height: 100%;
+  color-scheme: light dark;
+}
+html[transition] {
+  transition: all 500ms ease;
+}
+body {
+  /* max-width: 680px; */
+  min-height: 100%;
+  padding: 0 1.75rem;
+  margin: 0 auto;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+  scrollbar-color: var(--c-scrollbar) var(--c-bg);
+}
+ol,
+ul {
+  list-style: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+ol,
+li,
+blockquote {
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+input,
+select,
+textarea {
+  font-family: inherit;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+}
+pre,
+code {
+  font-family: inherit;
+}
+hr {
+  width: 55px;
+  border-bottom: 0;
+  border-color: rgba(125, 125, 125, 0.3);
+  margin: 3em auto;
+}
+input:-webkit-autofill {
+  /* 自动填充的文本颜色 */
+  -webkit-text-fill-color: #333333 !important;
+  /* -webkit-text-fill-color: var(--text-color) !important; */
+
+  /* 方式1：使用内阴影覆盖自动填充的背景色 */
+  /* box-shadow: 0 0 0 1000px #ffffff inset !important; */
+
+  /* 方式2：通过延迟一个月，取消自动填充的背景色 */
+  -webkit-transition: background-color 2592000s ease-in-out 0s;
+  transition: background-color 2592000s ease-in-out 0s;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: var(--c-bg);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-scrollbar);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-scrollbar-hover);
+}
+::selection {
+  background-color: #4a4a4a;
+  color: #f9f9f9;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.body-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 680px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.body-content .main-content {
+  flex: 1;
+}
+.body-content .footer {
+  margin-top: auto;
+}
+.hide {
+  display: none !important;
+}
+a.item {
+  transition: 0.2s all ease-out;
+  text-decoration: none;
+  border-bottom: none !important;
+  opacity: 0.6;
+}
+a.item:hover {
+  opacity: 1;
+}
+.header {
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .logo {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  -webkit-user-drag: none;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.18);
+  background-image: url(@/assets/img/logo.jpg);
+  background-size: cover;
+}
+.header .menu {
+  margin-right: -9px;
+  text-align: right;
+  user-select: none;
+}
+.header .menu a {
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 9px;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: auto;
+  opacity: 0.6;
+}
+.header .menu a:hover {
+  opacity: 1;
+}
+.footer {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+}
+.footer hr {
+  width: 100%;
+  margin: 0 auto 24px auto;
+}
+/* .footer a {
+  text-decoration: underline;
+  color: var(--fg);
+  padding: 0 4px;
+  white-space: nowrap;
+} */
+.footer-btn {
+  position: fixed;
+  z-index: 99;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+}
+.footer-btn i {
+  font-size: 22px;
+  background-color: #ffffff;
+}
+.footer-btn.theme-toggler {
+  right: 16px;
+  bottom: 64px;
+}
+.footer-btn.to-top {
+  right: 16px;
+  bottom: -50px;
+  transition: bottom 200ms ease-in-out;
+}
+.footer-btn.to-top.show {
+  bottom: 16px;
+}
+.footer-btn.play-pause-toggler {
+  right: 16px;
+  bottom: 64px;
+}
+.svg-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  background-color: #000000;
+}
+.icon-loading {
+  mask-image: url('@/assets/img/icon-loading.svg');
+  -webkit-mask-image: url('@/assets/img/icon-loading.svg');
+}
+.icon-theme-dark {
+  mask-image: url('@/assets/img/icon-theme-dark.svg');
+  -webkit-mask-image: url('@/assets/img/icon-theme-dark.svg');
+}
+.icon-theme-light {
+  mask-image: url('@/assets/img/icon-theme-light.svg');
+  -webkit-mask-image: url('@/assets/img/icon-theme-light.svg');
+}
+@media screen and (max-width: 680px) {
+  .header {
+    padding: 35px 0 20px 0;
+    /* justify-content: flex-start; */
+  }
+  .header .menu {
+    margin-right: -2px;
+    text-align: left;
+  }
+  .header .menu a {
+    margin: 2px 5px;
+    font-size: 15px;
+  }
+  .body-content {
+    width: 100%;
+  }
+}
+/* 用于切换dark mode的动画 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
