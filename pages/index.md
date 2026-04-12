@@ -19,7 +19,7 @@ description: Keep It Simple & Stupid.
 
 目前本站不再用 **静态博客模板** 来生成部署了，而是自己用 `Vue3`+`Vite-SSG` 的架构进行搭建重构，整体的理念秉持 [`KISS原则`](https://baike.baidu.com/item/KISS%E5%8E%9F%E5%88%99)，样式的设计风格及项目的目录结构主要参考了： [antfu.me](https://antfu.me/)
 
-如无特殊声明，站内所有内容均在 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可下发布
+如无特殊声明，站内所有内容均在 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可下授权
 
 本站目前仍在装修中，敬请不要期待...
 
