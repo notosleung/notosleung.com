@@ -1,6 +1,6 @@
 ---
 title: Notos Leung
-description: Keep It Simple and Stupid.
+description: Keep It Simple & Stupid.
 ---
 
 ## 关于我
