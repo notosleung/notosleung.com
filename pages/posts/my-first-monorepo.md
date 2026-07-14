@@ -41,11 +41,11 @@ packages:
 {
   "name": "@onequote/shared",
   "version": "1.0.0",
-  "main": "./data/index.ts",
-  "types": "./data/index.ts",
+  "main": "./index.ts",
+  "types": "./index.ts"
 }
 ```
-数据在 `packages/shared/data/index.ts` 中定义并导出。
+将 `quotes.ts` 放入该目录，并在 `index.ts` 中导出。
 
 3. 在项目引用共享包
 
