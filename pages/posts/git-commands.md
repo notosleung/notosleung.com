@@ -60,7 +60,7 @@ git branch
 git checkout -b <新分支名>
 
 # 等价于
-git branch <新分支名>    # 创建分支  
+git branch <新分支名>    # 创建分支
 git checkout <新分支名>  # 切换到 <新分支名> 这个分支
 ```
 
@@ -115,9 +115,35 @@ git reset --hard <commit_id>    # 回退到指定版本
 
 - **远程回退**（已push）
 ```bash
-git revert <commit-id>         # 生成新提交抵消旧提交（安全）
+# 生成新提交抵消旧提交（安全）
+git revert <commit-id>
+
+# 批量回退连续的多次提交
+git revert -n <最老的那次要回退的commit_id>^..<最新的那次要回退的commit_id>
 ```
 
+- **在本地停止追踪某个tracked文件**（已提交过远程）
+```bash
+# 停止追踪
+git update-index --skip-worktree <file-path>
+
+# 恢复追踪
+git update-index --no-skip-worktree <file-path>
+
+# 查看哪些文件被设置了该状态
+git ls-files -v | grep '^S'
+```
+
+- **要切换分支，但当前修改又不想提交**
+```bash
+# 暂存当前的修改
+git stash
+
+# 执行一些切换分支的操作。。。
+
+# 恢复之前的修改
+git stash pop
+```
 
 ### 一些注意事项
 
