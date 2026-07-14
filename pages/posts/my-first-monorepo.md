@@ -1,5 +1,5 @@
 ---
-title: 我第一个monorepo
+title: 我第一个Monorepo
 date: 2026-03-26T22:00:00.000+08:00
 ---
 
@@ -23,6 +23,41 @@ date: 2026-03-26T22:00:00.000+08:00
 ## 基本原则
 
 为了做到尽量 **统一且复用** 的原则，根目录还包含了一些配置文件，例如用于规范代码和提交格式的 `commitlint.config.js` 和 `eslint.config.js`；用于样式相关的 `postcss.config.js` 和 `uno.config.ts`；资源文件如 **css文件**、**字体文件**、**图片** 等，则是放在 `shared/` 目录中。如此一来，项目整体的配置以及呈现出来的样子应该是一致的，当有什么变动的时候，只需要改动一个即可。
+
+## 数据共用
+前边提到，我是为了两边项目共用同一个数据源，所以才搭了一个 `monorepo`，要在 **Vue** 和 **React** 两边项目都能引用到 `packages/shared` 里的内容，就有一些简单的步骤，这里记录一下：
+1. 初始化 **Monorepo**
+
+在根目录创建 `pnpm-workspace.yaml` 文件：
+```yaml
+packages:
+  - 'packages/*'
+```
+
+2. 配置共享包 (Shared)
+
+在 `packages/shared` 下创建 `package.json`：
+```json
+{
+  "name": "@onequote/shared",
+  "version": "1.0.0",
+  "main": "./data/index.ts",
+  "types": "./data/index.ts",
+}
+```
+数据在 `packages/shared/data/index.ts` 中定义并导出。
+
+3. 在项目引用共享包
+
+在根目录下执行命令，将共享包分别安装到两个应用中：
+```bash
+pnpm add @onequote/shared --filter one-quote-vue
+pnpm add @onequote/shared --filter one-quote-react
+```
+在代码中，就可以像引用普通 `npm` 包一样使用它：
+```typescript
+import { quotes } from '@onequote/shared'
+```
 
 ## 字体差异
 
