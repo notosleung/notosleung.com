@@ -135,8 +135,11 @@ export default defineConfig({
         VueRouterAutoImports,
         '@vueuse/core',
       ],
+      dts: 'src/auto-imports.d.ts',
+      dtsMode: 'overwrite',
     }),
     Components({
+      dts: 'src/components.d.ts',
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [
