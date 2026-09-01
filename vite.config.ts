@@ -17,6 +17,7 @@ import Markdown from 'unplugin-vue-markdown/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
+import 'vite-ssg'
 
 const HTTPS_REGEX = /^https?:\/\// // 以 http:// 或 https:// 开头的链接
 const BLANK_REGEX = /\s+/g // 仅包含空白字符的字符串
@@ -110,15 +111,19 @@ export default defineConfig({
         }
       },
       frontmatterPreprocess(frontmatter, options, id, defaults) {
-        let head: any
+        const description = frontmatter.description || frontmatter.title || 'Notos Leung'
+        const headFrontmatter = { ...frontmatter, description }
+        let head
         if (id.endsWith('pages/index.md')) {
           // index.md 时，自动处理 frontmatter 转换到 head
-          head = defaults(frontmatter, options)
+          head = defaults(headFrontmatter, options)
         }
         else {
-          const title = `${frontmatter.title} - Notos Leung`
+          const title = frontmatter.title
+            ? `${frontmatter.title} - Notos Leung`
+            : 'Notos Leung'
           // 非 index.md 时，不影响原 frontmatter 的情况下覆盖 title 字段，并处理转换到 head
-          head = defaults({ ...frontmatter, title }, options)
+          head = defaults({ ...headFrontmatter, title }, options)
         }
         return { head, frontmatter }
       },
@@ -142,11 +147,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-    },
-  },
-  server: {
-    fs: {
-      allow: ['..'],
     },
   },
   // SSG 配置

@@ -8,8 +8,9 @@ const route = useRoute()
     <RouterLink
       class="font-mono op50 hover:op75 w-fit"
       :to="route.path.split('/').slice(0, -1).join('/') || '/'"
-      v-text="'cd ..'"
-    />
+    >
+      cd ..
+    </RouterLink>
   </div>
 </template>
 

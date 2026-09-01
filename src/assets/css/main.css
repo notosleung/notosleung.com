@@ -23,9 +23,6 @@ html {
   height: 100%;
   color-scheme: light dark;
 }
-html[transition] {
-  transition: all 500ms ease;
-}
 body {
   /* max-width: 680px; */
   min-height: 100%;
@@ -130,9 +127,6 @@ input:-webkit-autofill {
 .body-content .footer {
   margin-top: auto;
 }
-.hide {
-  display: none !important;
-}
 a.item {
   transition: 0.2s all ease-out;
   text-decoration: none;
@@ -164,85 +158,32 @@ a.item:hover {
   text-align: right;
   user-select: none;
 }
-.header .menu a {
-  display: inline-block;
+.header .menu .menu-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
   font-size: 16px;
-  margin: 4px 9px;
+  margin: 0 1px;
   cursor: pointer;
   white-space: nowrap;
   user-select: auto;
   opacity: 0.6;
+  box-sizing: border-box;
 }
-.header .menu a:hover {
+.header .menu .menu-item:hover {
   opacity: 1;
 }
 .footer {
   width: 100%;
   margin: 0 auto;
   font-size: 14px;
-}
-.footer hr {
-  width: 100%;
-  margin: 0 auto 24px auto;
-}
-/* .footer a {
-  text-decoration: underline;
-  color: var(--fg);
-  padding: 0 4px;
-  white-space: nowrap;
-} */
-.footer-btn {
-  position: fixed;
-  z-index: 99;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0;
-}
-.footer-btn i {
-  font-size: 22px;
-  background-color: #ffffff;
-}
-.footer-btn.theme-toggler {
-  right: 16px;
-  bottom: 64px;
-}
-.footer-btn.to-top {
-  right: 16px;
-  bottom: -50px;
-  transition: bottom 200ms ease-in-out;
-}
-.footer-btn.to-top.show {
-  bottom: 16px;
-}
-.footer-btn.play-pause-toggler {
-  right: 16px;
-  bottom: 64px;
-}
-.svg-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  mask-size: 100% 100%;
-  -webkit-mask-size: 100% 100%;
-  background-color: #000000;
-}
-.icon-loading {
-  mask-image: url('@/assets/img/icon-loading.svg');
-  -webkit-mask-image: url('@/assets/img/icon-loading.svg');
-}
-.icon-theme-dark {
-  mask-image: url('@/assets/img/icon-theme-dark.svg');
-  -webkit-mask-image: url('@/assets/img/icon-theme-dark.svg');
-}
-.icon-theme-light {
-  mask-image: url('@/assets/img/icon-theme-light.svg');
-  -webkit-mask-image: url('@/assets/img/icon-theme-light.svg');
 }
 @media screen and (max-width: 680px) {
   .header {
@@ -253,8 +194,9 @@ a.item:hover {
     margin-right: -2px;
     text-align: left;
   }
-  .header .menu a {
-    margin: 2px 5px;
+  .header .menu .menu-item {
+    margin: 0;
+    padding: 0 6px;
     font-size: 15px;
   }
   .body-content {

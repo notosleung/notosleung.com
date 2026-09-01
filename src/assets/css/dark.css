@@ -27,24 +27,6 @@ html.dark hr {
 html.dark .header .logo {
   opacity: 0.8;
 }
-/* html.dark .footer a {
-  color: var(--fg);
-} */
-/* html.dark .list-category div a {
-  border-bottom: 1px solid #8b949e;
-}
-html.dark .list-post li .date {
-  color: #8b949e;
-}
-html.dark .list-post li .categories a {
-  color: #8b949e;
-} */
 html.dark .hover-underline:after {
   background-color: var(--fg-deep);
-}
-html.dark .footer-btn {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-html.dark .footer-btn i {
-  opacity: 0.7;
 }

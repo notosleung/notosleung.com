@@ -13,33 +13,45 @@ const { y: scroll } = useWindowScroll()
 </script>
 
 <template>
-  <div class="header">
-    <RouterLink to="/" class="logo" />
+  <header class="header">
+    <RouterLink to="/" class="logo" aria-label="返回首页" />
     <nav class="menu">
-      <RouterLink to="/posts" class="font-bold">
+      <RouterLink to="/posts" class="menu-item font-bold" aria-label="博客文章列表">
         <span class="lt-md:!hidden">Blog</span>
-        <div class="md:!hidden" i-ri-article-line />
+        <span class="md:!hidden" aria-hidden="true" i-ri-article-line />
       </RouterLink>
-      <a href="https://github.com/notosleung" target="_blank" class="cursor-pointer">
-        <div i-ri-github-line />
+      <a
+        href="https://github.com/notosleung"
+        target="_blank"
+        rel="noopener"
+        class="menu-item"
+        aria-label="访问 Notos Leung 的 GitHub"
+      >
+        <span aria-hidden="true" i-ri-github-line />
       </a>
-      <a class="cursor-pointer" @click="toggleDark">
-        <div i-ri-sun-line dark:i-ri-moon-line />
-      </a>
+      <button type="button" class="menu-item" aria-label="切换明暗主题" title="切换明暗主题" @click="toggleDark">
+        <span aria-hidden="true" i-ri-sun-line dark:i-ri-moon-line />
+      </button>
     </nav>
     <button
-      title="Scroll to top"
-      fixed right-3 bottom-3 w-10 h-10 hover:op100 rounded-full text-4
+      type="button"
+      title="返回顶部"
+      aria-label="返回顶部"
+      fixed right-3 bottom-3 w-11 h-11 hover:op100 rounded-full text-4
       hover-bg-hex-8883 bg-transparent transition duration-300 z-100 print:hidden
-      border-none outline-none cursor-pointer
+      border-none cursor-pointer
       :class="scroll > 300 ? 'op30' : 'op0! pointer-events-none'"
       @click="toTop()"
     >
-      <div i-ri-arrow-up-line />
+      <span aria-hidden="true" i-ri-arrow-up-line />
     </button>
-  </div>
+  </header>
 </template>
 
 <style scoped>
-
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
 </style>

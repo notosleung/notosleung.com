@@ -129,6 +129,11 @@
   opacity: 0.8;
   font-weight: bold;
 }
+.prose a.header-anchor:focus-visible {
+  opacity: 0.8;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 
 .prose strong {
   color: var(--fg-deep);
@@ -228,6 +233,10 @@
   margin: 0 auto;
   height: auto;
   box-shadow: 0 0 5px #e0e0e0;
+}
+.prose img[role='button']:focus-visible {
+  outline: 2px solid var(--fg-deeper);
+  outline-offset: 4px;
 }
 .prose code {
   --uno: font-mono text-3.5;

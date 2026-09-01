@@ -17,8 +17,6 @@ export default defineConfig({
       fonts: {
         sans: 'Inter',
         mono: 'DM Mono',
-        condensed: 'Roboto Condensed',
-        wisper: 'Bad Script',
       },
       processors: createLocalFontProcessor(),
     }),
