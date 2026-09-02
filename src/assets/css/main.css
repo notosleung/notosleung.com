@@ -154,28 +154,37 @@ a.item:hover {
   background-size: cover;
 }
 .header .menu {
-  margin-right: -9px;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-right: 0;
   text-align: right;
   user-select: none;
 }
 .header .menu .menu-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 8px;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
   border: 0;
   color: inherit;
   background: transparent;
   font-family: inherit;
   font-size: 16px;
-  margin: 0 1px;
+  line-height: 1.5rem;
+  margin: auto;
   cursor: pointer;
   white-space: nowrap;
   user-select: auto;
   opacity: 0.6;
   box-sizing: border-box;
+}
+.header .menu .menu-icon {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: text-bottom;
 }
 .header .menu .menu-item:hover {
   opacity: 1;
@@ -191,10 +200,15 @@ a.item:hover {
     /* justify-content: flex-start; */
   }
   .header .menu {
+    gap: 0;
     margin-right: -2px;
     text-align: left;
   }
   .header .menu .menu-item {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
     margin: 0;
     padding: 0 6px;
     font-size: 15px;

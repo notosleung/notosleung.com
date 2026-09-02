@@ -16,9 +16,9 @@ const { y: scroll } = useWindowScroll()
   <header class="header">
     <RouterLink to="/" class="logo" aria-label="返回首页" />
     <nav class="menu">
-      <RouterLink to="/posts" class="menu-item font-bold" aria-label="博客文章列表">
+      <RouterLink to="/posts" class="menu-item" aria-label="博客文章列表">
         <span class="lt-md:!hidden">Blog</span>
-        <span class="md:!hidden" aria-hidden="true" i-ri-article-line />
+        <span class="menu-icon md:!hidden" aria-hidden="true" i-ri-article-line />
       </RouterLink>
       <a
         href="https://github.com/notosleung"
@@ -27,10 +27,10 @@ const { y: scroll } = useWindowScroll()
         class="menu-item"
         aria-label="访问 Notos Leung 的 GitHub"
       >
-        <span aria-hidden="true" i-ri-github-line />
+        <span class="menu-icon" aria-hidden="true" i-ri-github-line />
       </a>
       <button type="button" class="menu-item" aria-label="切换明暗主题" title="切换明暗主题" @click="toggleDark">
-        <span aria-hidden="true" i-ri-sun-line dark:i-ri-moon-line />
+        <span class="menu-icon" aria-hidden="true" i-ri-sun-line dark:i-ri-moon-line />
       </button>
     </nav>
     <button
