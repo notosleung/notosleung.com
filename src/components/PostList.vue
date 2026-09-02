@@ -31,14 +31,14 @@ const posts = computed(() =>
 
 <template>
   <ul class="list-none not-prose">
-    <li v-if="!posts.length" py2 op50>
+    <li v-if="!posts.length" py2 op50 before:hidden class="!pl-0">
       { nothing here yet }
     </li>
     <template v-else>
       <li
         v-for="post in posts"
         :key="post.path"
-        class="min-w-0 text-gray-500 dark:text-inherit hover:border-b-black hover:text-black dark:hover:border-b-white dark:hover:text-white"
+        class="min-w-0 !pl-0 before:hidden text-gray-500 dark:text-inherit hover:border-b-black hover:text-black dark:hover:border-b-white dark:hover:text-white"
       >
         <RouterLink :to="post.path" class="item no-underline">
           <time :datetime="new Date(post.date).toISOString()" class="text-3.5 opacity-50 mr-2 uppercase tracking-tighter inline lt-sm:block">
