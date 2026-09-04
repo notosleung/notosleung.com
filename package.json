@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "vue-tsc -b",
-    "build": "pnpm typecheck && vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/generate-sitemap.ts",
+    "build": "pnpm typecheck && vite-ssg build && tsx ./scripts/copy-fonts.ts && tsx ./scripts/generate-sitemap.ts && tsx ./scripts/generate-feed.ts",
     "preview": "vite preview",
     "lint": "eslint src scripts vite.config.ts uno.config.ts postcss.config.js eslint.config.js",
     "lint:fix": "eslint src scripts vite.config.ts uno.config.ts postcss.config.js eslint.config.js --fix",
@@ -26,6 +26,7 @@
     "@antfu/eslint-config": "^7.7.0",
     "@commitlint/cli": "^20.4.3",
     "@commitlint/config-conventional": "^20.4.3",
+    "@iconify-json/la": "^1.2.1",
     "@iconify-json/ri": "^1.2.10",
     "@shikijs/markdown-it": "^4.0.2",
     "@shikijs/transformers": "^4.0.2",

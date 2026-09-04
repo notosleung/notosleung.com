@@ -29,6 +29,15 @@ const { y: scroll } = useWindowScroll()
       >
         <span class="menu-icon" aria-hidden="true" i-ri-github-line />
       </a>
+      <a
+        href="/feed.xml"
+        target="_blank"
+        rel="noopener"
+        class="menu-item"
+        aria-label="订阅 Notos Leung 的 RSS"
+      >
+        <span class="menu-icon" aria-hidden="true" i-la-rss-square style="font-size: 1.25rem;" />
+      </a>
       <button type="button" class="menu-item" aria-label="切换明暗主题" title="切换明暗主题" @click="toggleDark">
         <span class="menu-icon" aria-hidden="true" i-ri-sun-line dark:i-ri-moon-line />
       </button>
