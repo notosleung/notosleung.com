@@ -89,8 +89,8 @@ function close(event: KeyboardEvent) {
 .article-toc {
   display: none;
   position: fixed;
-  top: 120px;
-  left: 20px;
+  top: calc(4rem + 40px);
+  left: 1.75rem;
   z-index: 20;
   width: min(260px, calc((100vw - 680px) / 2 - 48px));
   max-height: calc(100dvh - 110px);

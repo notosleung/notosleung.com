@@ -142,7 +142,7 @@ a.item:hover {
   opacity: 1;
 }
 .header {
-  padding: 40px 0;
+  padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -163,6 +163,7 @@ a.item:hover {
   grid-auto-flow: column;
   align-items: center;
   gap: 1.2rem;
+  margin-left: auto;
   margin-right: 0;
   text-align: right;
   user-select: none;
@@ -194,16 +195,23 @@ a.item:hover {
 .header .menu .menu-item:hover {
   opacity: 1;
 }
+@media screen and (min-width: 681px) {
+  .header {
+    min-height: 40px;
+  }
+  .header .logo {
+    position: fixed;
+    top: 2rem;
+    left: 1.75rem;
+    z-index: 40;
+  }
+}
 .footer {
   width: 100%;
   margin: 0 auto;
   font-size: 14px;
 }
 @media screen and (max-width: 680px) {
-  .header {
-    padding: 35px 0 20px 0;
-    /* justify-content: flex-start; */
-  }
   .header .menu {
     gap: 0;
     margin-right: -2px;
@@ -228,15 +236,21 @@ a.item:hover {
   animation: none;
   mix-blend-mode: normal;
 }
-::view-transition-old(root) {
-  z-index: 1;
-}
 ::view-transition-new(root) {
-  z-index: 9999;
-}
-.dark::view-transition-old(root) {
-  z-index: 9999;
+  animation: switch-appearance 400ms ease-out;
 }
 .dark::view-transition-new(root) {
+  animation: none;
+}
+.dark::view-transition-old(root) {
   z-index: 1;
+  animation: switch-appearance 400ms ease-out reverse forwards;
+}
+@keyframes switch-appearance {
+  from {
+    clip-path: circle(0 at var(--switch-x) var(--switch-y));
+  }
+  to {
+    clip-path: circle(var(--switch-r) at var(--switch-x) var(--switch-y));
+  }
 }

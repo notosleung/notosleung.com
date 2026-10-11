@@ -16,38 +16,23 @@ export function toggleDark(event: MouseEvent) {
     return
   }
 
-  const x = event.clientX
-  const y = event.clientY
-  const endRadius = Math.hypot(
-    Math.max(x, innerWidth - x),
-    Math.max(y, innerHeight - y),
-  )
-  const transition = document.startViewTransition(async () => {
+  const x = (100 * event.clientX) / innerWidth
+  const y = (100 * event.clientY) / innerHeight
+  const maxRadius = (
+    100 * Math.hypot(
+      Math.max(event.clientX, innerWidth - event.clientX),
+      Math.max(event.clientY, innerHeight - event.clientY),
+    )
+  ) / (Math.hypot(innerWidth, innerHeight) / Math.SQRT2)
+
+  document.documentElement.style.setProperty('--switch-x', `${x}%`)
+  document.documentElement.style.setProperty('--switch-y', `${y}%`)
+  document.documentElement.style.setProperty('--switch-r', `${maxRadius}%`)
+
+  document.startViewTransition(async () => {
     isDark.value = !isDark.value
     await nextTick()
   })
-  transition.ready
-    .then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`,
-      ]
-      document.documentElement.animate(
-        {
-          clipPath: isDark.value
-            ? [...clipPath].reverse()
-            : clipPath,
-        },
-        {
-          duration: 400,
-          easing: 'ease-out',
-          fill: 'forwards',
-          pseudoElement: isDark.value
-            ? '::view-transition-old(root)'
-            : '::view-transition-new(root)',
-        },
-      )
-    })
 }
 
 export function formatDate(d: string | Date, onlyDate = true) {
