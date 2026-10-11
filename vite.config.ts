@@ -21,6 +21,7 @@ import 'vite-ssg'
 
 const HTTPS_REGEX = /^https?:\/\// // 以 http:// 或 https:// 开头的链接
 const BLANK_REGEX = /\s+/g // 仅包含空白字符的字符串
+const WINDOWS_SEPARATOR_REGEX = /\\/g
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -81,9 +82,38 @@ export default defineConfig({
         md.use(anchor, {
           permalink: anchor.permalink.linkInsideHeader({
             symbol: '#',
-            // placement: 'after',
+            renderHref: slug => `#${encodeURIComponent(slug)}`,
           }),
           slugify: s => s.trim().toLowerCase().replace(BLANK_REGEX, '-'),
+        })
+        md.core.ruler.after('anchor', 'article-toc', (state) => {
+          const headings: { id: string, text: string, level: number }[] = []
+          state.tokens.forEach((token, index) => {
+            if (token.type !== 'heading_open')
+              return
+
+            const id = token.attrGet('id')
+            const children = state.tokens[index + 1]?.children || []
+            const text = children
+              .filter(child => ['text', 'code_inline', 'image'].includes(child.type))
+              .map(child => child.content)
+              .join('')
+              .trim()
+            const link = children.find(child => child.attrGet('class') === 'header-anchor')
+            link?.attrSet('aria-label', `链接到章节：${text}`)
+            const level = Number(token.tag.slice(1))
+            if (id && level >= 2 && level <= 4)
+              headings.push({ id, text, level })
+          })
+
+          const file = String(state.env.id || '').replace(WINDOWS_SEPARATOR_REGEX, '/')
+          if (!file.includes('/pages/posts/') || file.endsWith('/index.md') || !headings.length)
+            return
+
+          // Reuse the final IDs (including duplicate suffixes) assigned by anchor.
+          const toc = new state.Token('html_block', '', 0)
+          toc.content = `<ArticleToc :headings="${md.utils.escapeHtml(JSON.stringify(headings))}" />\n`
+          state.tokens.unshift(toc)
         })
         md.use(LinkAttributes, {
           matcher: (link: string) => HTTPS_REGEX.test(link),

@@ -11,6 +11,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ArticleToc: typeof import('./components/ArticleToc.vue')['default']
     Back: typeof import('./components/Back.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Header: typeof import('./components/Header.vue')['default']

@@ -108,17 +108,20 @@
 .prose a code {
   color: #111827;
 }
+.prose :is(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+  scroll-margin-top: 5rem;
+}
 .prose a.header-anchor {
-  /* float: left; */
   position: absolute;
   left: -1em;
   margin-top: 0.125em;
-  /* margin-left: -1.2em; */
   padding-right: 0.4em;
   font-size: 0.85em;
   opacity: 0;
   text-decoration: none;
   border: 0 !important;
+  transition: opacity 0.2s ease;
 }
 .prose h1:hover a.header-anchor,
 .prose h2:hover a.header-anchor,
@@ -126,13 +129,17 @@
 .prose h4:hover a.header-anchor,
 .prose h5:hover a.header-anchor,
 .prose h6:hover a.header-anchor {
-  opacity: 0.8;
-  font-weight: bold;
+  opacity: 0.5;
 }
 .prose a.header-anchor:focus-visible {
   opacity: 0.8;
   outline: 2px solid currentColor;
   outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .prose a.header-anchor {
+    transition: none;
+  }
 }
 
 .prose strong {

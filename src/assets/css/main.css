@@ -23,6 +23,11 @@ html {
   height: 100%;
   color-scheme: light dark;
 }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 body {
   /* max-width: 680px; */
   min-height: 100%;
